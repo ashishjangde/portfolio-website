@@ -1,8 +1,23 @@
+'use client'
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { FlipWords } from "@/components/ui/flip-words";
+import { useEffect, useState } from "react";
+
+
+
 
 export default function Home() {
+  useEffect(() => {
+    // Ensures the component is mounted before rendering the theme-dependent elements
+    setMounted(true);
+  }, []);
+  
   const words = ["Innovative", "Beautiful", "Creative", "Functional"];
+  const [mounted, setMounted] = useState(false);
+  if (!mounted) {
+    return null; // Prevents rendering until the theme is fully loaded
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen w-full pb-20 gap-16 sm:p-2 font-[family-name:var(--font-geist-sans)]">
       <BackgroundLines className="flex items-center justify-center flex-col px-4">
